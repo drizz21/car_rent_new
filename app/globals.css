@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Primary brand colors - Purple/Indigo */
+    --primary: 238 65% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 238 65% 45%;
+    --primary-light: 238 65% 85%;
+
+    /* Secondary brand colors - Orange/Yellow accent */
+    --secondary: 45 93% 47%;
+    --secondary-foreground: 220 13% 18%;
+    --secondary-dark: 45 93% 37%;
+    --secondary-light: 45 93% 87%;
+
+    /* Neutral system */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent system */
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 13% 18%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 220 13% 18%;
+
+    /* Border and input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 238 65% 55%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 18% / 0.05);
+    --shadow: 0 1px 3px 0 hsl(220 13% 18% / 0.1), 0 1px 2px 0 hsl(220 13% 18% / 0.06);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -1px hsl(220 13% 18% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -2px hsl(220 13% 18% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 13% 18% / 0.1), 0 10px 10px -5px hsl(220 13% 18% / 0.04);
+
+    /* Animation */
+    --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(238 65% 55%), hsl(238 65% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(45 93% 47%), hsl(45 93% 37%));
+    --gradient-hero: linear-gradient(135deg, hsl(238 65% 55% / 0.9), hsl(238 65% 45% / 0.8));
+
+    --radius: 0.5rem;
+
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 220 14% 96%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 238 65% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 93% 50%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 220 14% 96%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 238 65% 60%;
+
+    /* Gradients for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(238 65% 60%), hsl(238 65% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(45 93% 50%), hsl(45 93% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(238 65% 60% / 0.9), hsl(238 65% 50% / 0.8));
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.1), 0 4px 6px -2px hsl(var(--primary) / 0.05);
+  }
+
+  .btn-hero:hover {
+    background-color: hsl(var(--primary-dark, var(--primary)));
+    box-shadow: 0 20px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  .btn-hero-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 15px -3px hsl(var(--secondary) / 0.1), 0 4px 6px -2px hsl(var(--secondary) / 0.05);
+  }
+
+  .btn-hero-secondary:hover {
+    background-color: hsl(var(--secondary-dark, var(--secondary)));
+    box-shadow: 0 20px 25px -5px hsl(var(--secondary) / 0.1), 0 10px 10px -5px hsl(var(--secondary) / 0.04);
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 20px 25px -5px hsl(220 13% 18% / 0.1), 0 10px 10px -5px hsl(220 13% 18% / 0.04);
+    transform: translateY(-8px);
+  }
+
+  /* Stats Cards */
+  .stats-card {
+    background-color: hsl(var(--background) / 0.2);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--background) / 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Gradients */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
