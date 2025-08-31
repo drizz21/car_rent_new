@@ -16,7 +16,6 @@ export interface CarWithStatus {
     pintu: string;
     airConditioner: string;
     seats: string;
-    konsumsBBM: string;
   };
   features: {
     primary: string[];
@@ -48,7 +47,6 @@ export const carsWithStatus: CarWithStatus[] = [
       pintu: "5",
       airConditioner: "Yes",
       seats: "7",
-      konsumsBBM: "13 Km/Liter"
     },
     features: {
       primary: ["ABS", "Air Bags", "Cruise Control"],
@@ -76,8 +74,7 @@ export const carsWithStatus: CarWithStatus[] = [
       bahanBakar: "Gasoline",
       pintu: "4",
       airConditioner: "Yes",
-      seats: "5",
-      konsumsBBM: "15 Km/Liter"
+      seats: "5"
     },
     features: {
       primary: ["ABS", "Air Bags", "Cruise Control"],
@@ -105,8 +102,7 @@ export const carsWithStatus: CarWithStatus[] = [
       bahanBakar: "Gasoline",
       pintu: "4",
       airConditioner: "Yes",
-      seats: "5",
-      konsumsBBM: "14 Km/Liter"
+      seats: "5"
     },
     features: {
       primary: ["ABS", "Air Bags", "Cruise Control"],
@@ -134,8 +130,7 @@ export const carsWithStatus: CarWithStatus[] = [
       bahanBakar: "Diesel",
       pintu: "5",
       airConditioner: "Yes",
-      seats: "7",
-      konsumsBBM: "12 Km/Liter"
+      seats: "7"
     },
     features: {
       primary: ["ABS", "Air Bags", "Cruise Control"],
@@ -163,8 +158,7 @@ export const carsWithStatus: CarWithStatus[] = [
       bahanBakar: "Diesel",
       pintu: "5",
       airConditioner: "Yes",
-      seats: "7",
-      konsumsBBM: "10 Km/Liter"
+      seats: "7"
     },
     features: {
       primary: ["ABS", "Air Bags", "Cruise Control"],

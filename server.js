@@ -38,9 +38,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const pool = require('./config/database');
 
 
-
-
-
 // ==================== ENDPOINT UNTUK CARS ====================
 
 // Endpoint untuk menambahkan mobil baru
