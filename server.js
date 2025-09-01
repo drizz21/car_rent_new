@@ -35,10 +35,37 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup koneksi MySQL dengan POOLING
+const bcrypt = require('bcrypt');
 const pool = require('./config/database');
 
 
 // ==================== ENDPOINT UNTUK CARS ====================
+
+// ==================== ENDPOINT LOGIN ADMIN ====================
+app.post('/api/admin/login', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ success: false, message: 'Username dan password wajib diisi' });
+  }
+  pool.query('SELECT * FROM users WHERE BINARY username = ? AND role = "admin"', [username], async (err, results) => {
+    if (err) {
+      console.error('Gagal mengambil data user:', err);
+      return res.status(500).json({ success: false, message: 'Terjadi kesalahan server' });
+    }
+    console.log('Hasil query login:', results);
+    if (results.length === 0) {
+      return res.json({ success: false, message: 'User tidak ditemukan' });
+    }
+    const user = results[0];
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      // Token sederhana, bisa diganti JWT jika perlu
+      const token = 'admin-token-' + Date.now();
+      return res.json({ success: true, token });
+    }
+    return res.json({ success: false, message: 'Password salah' });
+  });
+});
 
 // Endpoint untuk menambahkan mobil baru
 app.post('/add-car', upload.single('mainImage'), (req, res) => {
@@ -364,6 +391,57 @@ app.delete('/bookings/:id', (req, res) => {
 });
 // ==================== ENDPOINT UNTUK EXPENSES ====================
 
+// ==================== ENDPOINT FINANCE SUMMARY (DASHBOARD CHART) ====================
+app.get('/api/finance-summary', async (req, res) => {
+  // Helper: format bulan ke nama
+  const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  try {
+    // Query pemasukan (booking selesai) per bulan
+    const pemasukanQuery = `
+      SELECT MONTH(start_date) AS month, SUM(
+        CASE 
+          WHEN b.status = 'Selesai' THEN c.price * (DATEDIFF(b.end_date, b.start_date) + 1)
+          ELSE 0
+        END
+      ) AS pemasukan, COUNT(CASE WHEN b.status = 'Selesai' THEN 1 END) AS order_selesai
+      FROM bookings b
+      LEFT JOIN cars c ON b.unit = c.name
+      WHERE YEAR(b.start_date) = YEAR(CURDATE())
+      GROUP BY MONTH(b.start_date)
+    `;
+    // Query pengeluaran per bulan
+    const pengeluaranQuery = `
+      SELECT MONTH(date) AS month, SUM(amount) AS pengeluaran
+      FROM expenses
+      WHERE YEAR(date) = YEAR(CURDATE())
+      GROUP BY MONTH(date)
+    `;
+    // Jalankan query secara paralel
+    pool.query(pemasukanQuery, (err1, pemasukanRows) => {
+      if (err1) return res.status(500).json({ success: false, message: 'Gagal query pemasukan', error: err1 });
+      pool.query(pengeluaranQuery, (err2, pengeluaranRows) => {
+        if (err2) return res.status(500).json({ success: false, message: 'Gagal query pengeluaran', error: err2 });
+        // Gabungkan data per bulan
+        const summary = [];
+        for (let i = 1; i <= 12; i++) {
+          const pemasukan = pemasukanRows.find(r => r.month === i) || { pemasukan: 0, order_selesai: 0 };
+          const pengeluaran = pengeluaranRows.find(r => r.month === i) || { pengeluaran: 0 };
+          const profit = pemasukan.pemasukan - pengeluaran.pengeluaran;
+          summary.push({
+            month: monthNames[i-1],
+            pemasukan: pemasukan.pemasukan || 0,
+            pengeluaran: pengeluaran.pengeluaran || 0,
+            profit: profit || 0,
+            order_selesai: pemasukan.order_selesai || 0
+          });
+        }
+        res.json({ success: true, data: summary });
+      });
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Gagal mengambil data keuangan', error });
+  }
+});
 // Endpoint untuk menambahkan pengeluaran baru
 app.post('/expenses', (req, res) => {
   console.log('Endpoint /expenses dipanggil (POST)');

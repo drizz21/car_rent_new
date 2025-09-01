@@ -11,7 +11,7 @@ import {
   FaChartLine,
   FaSearch
 } from 'react-icons/fa';
-import TambahPengeluaran from '../backend/TambahPengeluaran';
+import TambahPengeluaran from '../backend/AddPengeluaran';
 
 interface Expense {
   id: number;

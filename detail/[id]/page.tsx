@@ -76,10 +76,15 @@ export default function CarDetailPage() {
     fetchCarDetail();
   }, [carId]);
 
-  const formatCurrency = (price: string) => {
-  // Pastikan harga selalu integer dan format ribuan
-  const numPrice = parseInt(price.replace(/\D/g, ''));
-  return 'Rp' + numPrice.toLocaleString('id-ID');
+  // Format harga ke Rupiah ribuan tanpa desimal
+  const formatCurrency = (price: string | number) => {
+    let numPrice = 0;
+    if (typeof price === 'string') {
+      numPrice = parseInt(price.replace(/\D/g, ''));
+    } else {
+      numPrice = price;
+    }
+    return 'Rp' + (numPrice ? numPrice.toLocaleString('id-ID') : '0');
   };
 
   const getStatusText = (car: Car) => {
@@ -188,84 +193,41 @@ export default function CarDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="aspect-w-16 aspect-h-12 bg-white rounded-2xl overflow-hidden shadow-sm">
-              {selectedImage ? (
-                <Image
-                  src={
-                    selectedImage && selectedImage !== ''
-                      ? selectedImage.startsWith('data:image')
-                        ? selectedImage
-                        : selectedImage.startsWith('http')
-                          ? selectedImage
-                          : `/images/${selectedImage}`
-                      : '/images/mobil-display.png'
-                  }
+            <div className="aspect-w-16 aspect-h-12 bg-white rounded-2xl overflow-hidden shadow-sm flex items-center justify-center">
+              {car.mainImage ? (
+                <img
+                  src={`data:image/jpeg;base64,${car.mainImage}`}
                   alt={car.name}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-contain p-4"
-                  onError={(e) => { e.currentTarget.src = '/images/mobil-display.png'; }}
+                  className="w-full h-full object-contain"
+                  onError={e => { e.currentTarget.src = '/images/mobil-display.png'; }}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                  <FaCar className="text-6xl text-gray-400" />
-                </div>
+                <img
+                  src={'/images/mobil-display.png'}
+                  alt="No Image"
+                  className="w-full h-full object-contain"
+                />
               )}
             </div>
 
-            {/* Thumbnail Images */}
+            {/* Gallery Images */}
             {car.images && car.images.length > 0 && (
-              <div className="flex space-x-2 overflow-x-auto pb-2">
-                {car.mainImage && (
-                  <button
-                    onClick={() => setSelectedImage(car.mainImage)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
-                      selectedImage === car.mainImage ? 'border-blue-500' : 'border-gray-200'
-                    }`}
-                  >
-                    <Image
-                      src={
-                        car.mainImage && car.mainImage !== ''
-                          ? car.mainImage.startsWith('data:image')
-                            ? car.mainImage
-                            : car.mainImage.startsWith('http')
-                              ? car.mainImage
-                              : `/images/${car.mainImage}`
-                          : '/images/mobil-display.png'
-                      }
-                      alt="Main"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain bg-white p-1"
-                      onError={(e) => { e.currentTarget.src = '/images/mobil-display.png'; }}
-                    />
-                  </button>
-                )}
-                {car.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(image)}
-                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
-                      selectedImage === image ? 'border-blue-500' : 'border-gray-200'
-                    }`}
-                  >
-                    <Image
-                      src={
-                        image && image !== ''
-                          ? image.startsWith('data:image')
-                            ? image
-                            : image.startsWith('http')
-                              ? image
-                              : `/images/${image}`
-                          : '/images/mobil-display.png'
-                      }
-                      alt={`${car.name} ${index + 1}`}
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain bg-white p-1"
-                      onError={(e) => { e.currentTarget.src = '/images/mobil-display.png'; }}
-                    />
-                  </button>
+              <div className="flex gap-2 mt-2">
+                {car.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={
+                      img.startsWith('data:image')
+                        ? img
+                        : img.startsWith('/')
+                          ? img
+                          : `/images/car-list/${img}`
+                    }
+                    alt={`Gallery ${idx}`}
+                    className={`w-16 h-16 object-cover rounded-lg border cursor-pointer ${selectedImage === img ? 'border-blue-500' : 'border-gray-200'}`}
+                    onClick={() => setSelectedImage(img)}
+                    onError={e => { e.currentTarget.src = '/images/mobil-display.png'; }}
+                  />
                 ))}
               </div>
             )}

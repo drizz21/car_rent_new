@@ -212,13 +212,21 @@ const Cars: React.FC<CarsListProps> = ({
               >
                 <div className="relative h-40 mb-4 bg-white rounded-lg overflow-hidden">
                   {car.mainImage ? (
-                    <Image
-                      src={car.mainImage}
-                      alt={car.name}
-                      fill
-                      className="object-contain p-2"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                    car.mainImage.startsWith('data:image') || car.mainImage.length > 100 ? (
+                      <img
+                        src={car.mainImage.startsWith('data:image') ? car.mainImage : `data:image/png;base64,${car.mainImage}`}
+                        alt={car.name}
+                        className="w-full h-full object-contain p-2"
+                      />
+                    ) : (
+                      <Image
+                        src={car.mainImage}
+                        alt={car.name}
+                        fill
+                        className="object-contain p-2"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    )
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gray-200">
                       <FaCar className="text-4xl text-gray-400" />
@@ -242,6 +250,8 @@ const Cars: React.FC<CarsListProps> = ({
                     <span>{car.specifications?.transmisi || 'Manual'}</span>
                     <span>{car.specifications?.bahanBakar || 'Bensin'}</span>
                     <span>{car.specifications?.seats || '5'} Seats</span>
+                    <span>{car.specifications?.pintu || '4'} Pintu</span>
+                    <span>AC: {car.specifications?.airConditioner || '-'}</span>
                   </div>
 
                   {/* Status mobil */}
@@ -272,6 +282,25 @@ const Cars: React.FC<CarsListProps> = ({
                       {isCarAvailable(car) ? 'Lihat Detail' : 'Tidak Tersedia'}
                     </Link>
                   </div>
+
+                  {/* Logo Mobil */}
+        <section className="bg-white py-22 px-4 rounded-xl mb-8 mt-8">
+          <div className="flex justify-center flex-wrap gap-20 items-center">
+            {[
+              'toyota.png', 'honda.png', 'mitsubishi.png',
+              'daihatsu.png', 'wuling.png', 'hyundai.png', 'suzuki.png'
+            ].map((logo, i) => (
+              <Image
+                key={i}
+                src={`/images/logo-mobil/${logo}`}
+                alt={`Brand ${i}`}
+                width={60}
+                height={60}
+                className="object-contain"
+              />
+            ))}
+          </div>
+        </section>
                 </div>
               </div>
             ))}

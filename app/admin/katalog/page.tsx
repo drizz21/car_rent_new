@@ -11,8 +11,8 @@ import {
   FaEye,
   FaSpinner
 } from 'react-icons/fa';
-import TambahMobil from '../backend/TambahMobil';
-import EditMobil from '../backend/EditMobil';
+import AddCar from '../backend/AddCar';
+import EditCar from '../backend/EditCar';
 
 // Type from AddCar/EditCar (CarData)
 type CarData = {
@@ -448,14 +448,14 @@ const CarsManagement = () => {
       </div>
 
       {/* AddCar Pop-up */}
-      <TambahMobil
+      <AddCar
         isOpen={isAddCarOpen}
         onClose={() => setIsAddCarOpen(false)}
         onAddCar={handleAddCar}
       />
 
       {/* EditCar Pop-up */}
-      <EditMobil
+      <EditCar
         isOpen={editingCarId !== null}
         onClose={() => setEditingCarId(null)}
         onCarUpdated={handleCarUpdated}

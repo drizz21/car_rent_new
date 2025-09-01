@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -17,39 +18,40 @@ const AdminLogin = () => {
     setIsLoading(true);
     setError('');
 
-    // Simulasi login - nanti bisa diganti dengan API call
-    setTimeout(() => {
-      if (username === 'admin' && password === 'admin123') {
-        // Simpan token/session dengan cookie yang lebih aman
-        const token = 'admin-token-' + Date.now();
+    try {
+      const res = await axios.post('http://localhost:5000/api/admin/login', { username, password });
+      if (res.data.success) {
+        const token = res.data.token;
         document.cookie = `adminToken=${token}; path=/; max-age=3600; samesite=lax`;
         localStorage.setItem('adminToken', token);
         localStorage.setItem('adminUser', username);
-        localStorage.setItem('isAdminLoggedIn', 'true'); // Tambahkan key yang dicari dashboard
+        localStorage.setItem('isAdminLoggedIn', 'true');
         setIsLoading(false);
         window.location.replace('/admin');
       } else {
         setIsLoading(false);
-        setError('Username atau password salah!');
-        // Tidak reload, biarkan input tetap ada
+        setError(res.data.message || 'Username atau password salah!');
       }
-    }, 1000);
+    } catch (err) {
+      setIsLoading(false);
+      setError('Gagal login, coba lagi.');
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-        <div>
-          <div className="mx-auto h-12 w-12 bg-blue-600 rounded-full flex items-center justify-center">
-            <FaUser className="h-6 w-6 text-white" />
-          </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Admin Login
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Masuk ke dashboard admin
-          </p>
+      <div>
+        <div className="mx-auto h-32 w-32 bg-white-600 rounded-full flex items-center justify-center">
+        <img src="/images/RN.png" alt="Admin Icon" className="h-24 w-24 object-contain" />
         </div>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Admin Login
+        </h2>
+        <p className="mt-2 text-center text-sm text-gray-600">
+        Masuk ke dashboard admin
+        </p>
+      </div>
         
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">

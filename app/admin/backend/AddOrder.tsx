@@ -16,7 +16,7 @@ interface AddOrderProps {
   cars: Car[];
 }
 
-const TambahOrder: React.FC<AddOrderProps> = ({ isOpen, onClose, onAddOrder, cars }) => {
+const AddOrder: React.FC<AddOrderProps> = ({ isOpen, onClose, onAddOrder, cars }) => {
   const [formData, setFormData] = useState({
     name: '',
     unit: '',
@@ -482,4 +482,4 @@ const TambahOrder: React.FC<AddOrderProps> = ({ isOpen, onClose, onAddOrder, car
   );
 };
 
-export default TambahOrder;
+export default AddOrder;

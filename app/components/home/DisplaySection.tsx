@@ -9,7 +9,7 @@ const DisplaySection = () => {
   ];
 
   return (
-    <section className="relative py-30 sm:py-24 lg:py-32 bg-gray-50">
+    <section className="relative py-14 sm:py-10 lg:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Background Container with Image Only */}
       <div

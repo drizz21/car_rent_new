@@ -21,7 +21,7 @@ interface AddCarProps {
   onAddCar: (car: CarData) => void;
 }
 
-const TambahMobil: React.FC<AddCarProps> = ({ isOpen, onClose, onAddCar }) => {
+const AddCar: React.FC<AddCarProps> = ({ isOpen, onClose, onAddCar }) => {
   const [carData, setCarData] = useState<CarData>({
     name: '',
     type: 'SUV',
@@ -456,4 +456,4 @@ const TambahMobil: React.FC<AddCarProps> = ({ isOpen, onClose, onAddCar }) => {
   );
 };
 
-export default TambahMobil;
+export default AddCar;

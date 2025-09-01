@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Insert default admin user (password: admin123)
 INSERT INTO users (username, password, role) VALUES 
-('admin', '$2b$10$rQZ8K9mN2pL3oX1vY4wQ5eR6tU7iI8jK9lM0nO1pQ2rS3tU4vW5xY6zA7bC8dE9fF0gG1hH2iI3jJ4kK5lL6mM7nN8oO9pP0qQ1rR2sS3tT4uU5vV6wW7xX8yY9zZ', 'admin');
+('superadmin1', '$2a$12$1ye1uhvWA.lV4LS1pY0Bp.mQYHFQfOdXY45jK1p4.FLSQgDbozKcC', 'admin'),
+('manager2', '$2a$12$9d4scRVhWgxobZiugLE44.uISNBf3YxXpkhNN/QzaacM4r7F4hiOq', 'admin'),
+('operator3', '$2a$12$MhEXIzCaPxo91DX5A1g4J.Y7ntHVeHfzwz1dwjKyU3Dl7ctS6un4i', 'admin');
 
 -- Insert sample data untuk cars
 INSERT INTO cars (name, type, price, transmisi, bahanBakar, pintu, airConditioner, seats, description, status) VALUES

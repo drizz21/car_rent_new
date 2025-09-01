@@ -24,7 +24,7 @@ interface EditCarProps {
   carId: number;
 }
 
-const EditMobil: React.FC<EditCarProps> = ({ isOpen, onClose, onCarUpdated, carId }) => {
+const EditCar: React.FC<EditCarProps> = ({ isOpen, onClose, onCarUpdated, carId }) => {
   const [carData, setCarData] = useState<CarData>({
     id: 0,
     name: '',
@@ -485,7 +485,7 @@ const EditMobil: React.FC<EditCarProps> = ({ isOpen, onClose, onCarUpdated, carI
                   ) : carData.mainImage ? (
                     <div className="relative w-full h-full">
                       <img 
-                        src={`data:image/jpeg;base64,${carData.mainImage}`} 
+                        src={`data:image/png;base64,${carData.mainImage}`} 
                         alt="Current" 
                         className="w-full h-full object-contain p-2"
                       />
@@ -577,4 +577,4 @@ const EditMobil: React.FC<EditCarProps> = ({ isOpen, onClose, onCarUpdated, carI
   );
 };
 
-export default EditMobil;
+export default EditCar;

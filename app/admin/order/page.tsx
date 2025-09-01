@@ -9,7 +9,7 @@ import {
   FaFilter,
   FaEdit
 } from 'react-icons/fa';
-import TambahOrder from '../backend/TambahOrder';
+import TambahOrder from '../backend/AddOrder';
 import Edi from '../backend/EditOrder';
 import EditOrder from '../backend/EditOrder';
 
