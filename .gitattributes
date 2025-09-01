@@ -1,0 +1,19 @@
+# Atur perilaku default untuk semua file teks
+* text=auto
+
+# Gunakan LF untuk file-file umum dalam pengembangan web.
+# Ini adalah standar modern dan mencegah masalah antar-OS.
+*.js      eol=lf
+*.jsx     eol=lf
+*.ts      eol=lf
+*.tsx     eol=lf
+*.html    eol=lf
+*.css     eol=lf
+*.scss    eol=lf
+*.json    eol=lf
+*.yml     eol=lf
+*.md      eol=lf
+
+# Biarkan file biner (seperti gambar) tidak tersentuh
+*.png     binary
+*.jpg     binary
