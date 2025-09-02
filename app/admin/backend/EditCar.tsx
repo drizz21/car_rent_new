@@ -485,7 +485,7 @@ const EditCar: React.FC<EditCarProps> = ({ isOpen, onClose, onCarUpdated, carId 
                   ) : carData.mainImage ? (
                     <div className="relative w-full h-full">
                       <img 
-                        src={`data:image/png;base64,${carData.mainImage}`} 
+                        src={`data:image/jpeg;base64,${carData.mainImage}`} 
                         alt="Current" 
                         className="w-full h-full object-contain p-2"
                       />

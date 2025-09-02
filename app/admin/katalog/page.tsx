@@ -25,6 +25,7 @@ type CarData = {
   pintu?: number;
   airConditioner?: string;
   seats?: number;
+  konsumsBBM?: number;
   description?: string;
   status?: 'available' | 'rented' | 'maintenance';
   mainImage?: File | string | null;
@@ -40,6 +41,7 @@ interface Car {
   pintu: number;
   airConditioner: string;
   seats: number;
+  konsumsBBM: number;
   description: string;
   status: 'available' | 'rented' | 'maintenance';
   mainImage: string | null; // Base64 string
@@ -83,26 +85,28 @@ const CarsManagement = () => {
     // Handle adding new car (support File or string for mainImage)
     const handleAddCar = async (carData: CarData) => {
       try {
-        // Kirim data sebagai FormData agar sesuai dengan API Next.js dan backend
-        const formData = new FormData();
-        formData.append('name', carData.name || '');
-        formData.append('type', carData.type || '');
-        formData.append('price', carData.price ? carData.price.toString() : '0');
-        formData.append('transmisi', carData.transmisi || '');
-        formData.append('bahanBakar', carData.bahanBakar || '');
-        formData.append('pintu', carData.pintu ? carData.pintu.toString() : '0');
-        formData.append('airConditioner', carData.airConditioner || '');
-        formData.append('seats', carData.seats ? carData.seats.toString() : '0');
-        formData.append('description', carData.description || '');
-        formData.append('status', carData.status || 'available');
-        // Gambar utama
-        if (carData.mainImage) {
-          formData.append('mainImage', carData.mainImage);
+        let mainImageString = null;
+        if (carData.mainImage && typeof carData.mainImage !== 'string') {
+          mainImageString = await new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+              const result = reader.result as string;
+              const base64 = result.split(',')[1];
+              resolve(base64);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(carData.mainImage as File);
+          });
+        } else {
+          mainImageString = carData.mainImage || null;
         }
-        // Kirim ke API Next.js
+        const payload = { ...carData, mainImage: mainImageString };
         const response = await fetch('/api/cars', {
           method: 'POST',
-          body: formData,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
         });
         if (!response.ok) throw new Error('Gagal menambah mobil');
         const carsRes = await fetch('/api/cars');
@@ -161,8 +165,7 @@ const CarsManagement = () => {
   };
 
   const formatCurrency = (value: number): string => {
-  // Format ribuan tanpa desimal, misal: 500000 => 500.000
-  return value ? value.toLocaleString('id-ID') : '0';
+    return new Intl.NumberFormat('id-ID').format(value);
   };
 
   const handleDelete = async (carId: number) => {
@@ -363,16 +366,9 @@ const CarsManagement = () => {
                         <div className="w-20 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                           {car.mainImage ? (
                             <img
-                              src={
-                                car.mainImage.startsWith('data:image')
-                                  ? car.mainImage
-                                  : car.mainImage.startsWith('http')
-                                    ? car.mainImage
-                                    : `/images/${car.mainImage}`
-                              }
+                              src={`data:image/jpeg;base64,${car.mainImage}`}
                               alt={car.name}
                               className="w-full h-full object-contain"
-                              onError={e => { e.currentTarget.src = '/images/mobil-display.png'; }}
                             />
                           ) : (
                             <div className="w-full h-full bg-gray-200 flex items-center justify-center">
@@ -396,20 +392,17 @@ const CarsManagement = () => {
                       <div className="text-sm text-gray-500">/hari</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">Transmisi: {car.transmisi}</div>
-                      <div className="text-sm text-gray-900">Bahan Bakar: {car.bahanBakar}</div>
-                      <div className="text-sm text-gray-900">Pintu: {car.pintu}</div>
-                      <div className="text-sm text-gray-900">Kursi: {car.seats}</div>
-                      <div className="text-sm text-gray-900">AC: {car.airConditioner}</div>
+                      <div className="text-sm text-gray-900">{car.transmisi}</div>
+                      <div className="text-sm text-gray-500">{car.seats} kursi</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {getStatusBadge(car.status)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <a href={`/detail/${car.id}`} className="text-blue-600 hover:text-blue-800 p-1" title="Lihat Detail">
+                        <button className="text-blue-600 hover:text-blue-800 p-1" title="Lihat Detail">
                           <FaEye />
-                        </a>
+                        </button>
                         <button 
                           onClick={() => setEditingCarId(car.id)} // Set ID mobil yang akan diedit
                           className="text-yellow-600 hover:text-yellow-800 p-1" 

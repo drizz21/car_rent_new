@@ -3,7 +3,7 @@
 import Navbar from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { Card, CardContent } from '../components/ui/card';
-import { reviewPelanggan } from '../data/MockData';
+import { reviewPelanggan } from '../../data/MockData';
 import { motion } from 'framer-motion';
 import { User, Star } from 'lucide-react';
 import Image from 'next/image';
