@@ -1,43 +1,47 @@
-"user client"
+"use client"
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Check } from 'lucide-react';
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { Check } from "lucide-react"
+
 /**
  * Section fasilitas yang tersedia
  * Menampilkan daftar fasilitas yang diberikan kepada pelanggan
  */
 function FasilitasSection() {
   const fasilitas = [
-    'Kendaraan terawat dan bersih',
-    'Dokumen lengkap (STNK, Asuransi)',
-    'BBM penuh saat penyerahan',
-    'Driver berpengalaman (optional)',
-    'Layanan antar jemput gratis',
-    'Customer service 24/7',
-    'Harga transparan tanpa biaya tersembunyi',
-    'Proses rental yang cepat dan mudah'
-  ];
+    "Kendaraan terawat dan bersih",
+    "Dokumen lengkap (STNK, Asuransi)",
+    "BBM penuh saat penyerahan",
+    "Driver berpengalaman (optional)",
+    "Layanan antar jemput gratis",
+    "Customer service 24/7",
+    "Harga transparan tanpa biaya tersembunyi",
+    "Proses rental yang cepat dan mudah",
+  ]
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
+        <div className="grid lg:grid-cols-2 gap-4 items-center">
+          {/* Gambar di kiri */}
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            >
+            className="flex justify-center"
+          >
             <Image
               src="/images/display-home-2/display-2.png"
               alt="Fasilitas Rino Rental"
-              width={400}
-              height={300}
-              className="rounded-lg shadow-lg w-full h-auto"
+              width={500}
+              height={350}
+              className="rounded-lg shadow-lg max-w-[450px] w-full h-auto object-contain"
             />
-            </motion.div>
+          </motion.div>
 
+          {/* List Fasilitas */}
           <div>
             <h3 className="text-2xl font-bold mb-2">Fasilitas Lengkap</h3>
             <p className="text-gray-600 mb-6">
@@ -65,7 +69,7 @@ function FasilitasSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default FasilitasSection;
+export default FasilitasSection
