@@ -124,17 +124,23 @@ const KendaraanSection = () => {
                       height={192}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    {/* Status Badge - Tersedia */}
+                    {/* Status Badge */}
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-green-500 text-white text-xs font-bold shadow">
-                        Tersedia
-                      </Badge>
-                    </div>
-                    {/* Type Badge */}
-                    <div className="absolute top-4 right-4">
-                      <Badge variant="outline" className="bg-background/90 backdrop-blur-sm">
-                        {vehicle.type}
-                      </Badge>
+                      {vehicle.status === 'available' && (
+                        <Badge className="bg-green-600 text-white text-xs font-bold shadow">
+                          Tersedia
+                        </Badge>
+                      )}
+                      {vehicle.status === 'rented' && (
+                        <Badge className="bg-orange-500 text-white text-xs font-bold shadow">
+                          Disewa
+                        </Badge>
+                      )}
+                      {vehicle.status === 'maintenance' && (
+                        <Badge className="bg-red-600 text-white text-xs font-bold shadow">
+                          Perbaikan
+                        </Badge>
+                      )}
                     </div>
                   </div>
                   
@@ -149,6 +155,10 @@ const KendaraanSection = () => {
                           <span className="text-sm font-normal text-muted-foreground">/hari</span>
                         </div>
                       </div>
+                      {/* Type Badge (SUV, MPV, Sedan) */}
+                      <Badge variant="outline" className="ml-2 bg-background/90 backdrop-blur-sm">
+                        {vehicle.type}
+                      </Badge>
                     </div>
 
                     {/* Features */}
