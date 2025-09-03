@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from "../../app/components/layout/Header";
-import Footer from "../../app/components/layout/Footer";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 import { FaCar, FaGasPump, FaCogs, FaDoorOpen, FaUsers, FaCheckCircle, FaWhatsapp, FaArrowRight, FaClock, FaCalendarAlt } from 'react-icons/fa';
-import { Button } from "../../app/components/ui/button";
-import { Card, CardContent } from "../../app/components/ui/card";
-import { Badge } from "../../app/components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 
 interface Car {
   id: number;
@@ -132,7 +132,7 @@ const DetailCar = () => {
         if (!response.ok) throw new Error('Failed to fetch cars');
         const data = await response.json();
         const filtered = data
-          .filter((item: Car) => item.id !== parseInt(id as string) && item.status === 'Tersedia')
+          .filter((item: Car) => item.id !== parseInt(id as string) && item.status === 'available')
           .slice(0, 6);
         setOtherCars(filtered);
       } catch (error) {
@@ -160,6 +160,9 @@ const DetailCar = () => {
         <div className="text-center">
           <FaCar className="text-6xl text-gray-400 mx-auto mb-4" />
           <p className="text-gray-600 text-lg">Mobil tidak ditemukan</p>
+          <Link href="/kendaraan" className="text-blue-600 hover:text-blue-800 mt-4 inline-block">
+            ← Kembali ke Daftar Mobil
+          </Link>
         </div>
       </div>
     );
@@ -192,11 +195,11 @@ const DetailCar = () => {
                       {car.type}
                     </Badge>
                     <Badge className={`${
-                      car.status === 'Tersedia' ? 'bg-green-500 text-white' :
+                      car.status === 'available' ? 'bg-green-500 text-white' :
                       car.status === 'rented' ? 'bg-orange-500 text-white' :
                       'bg-red-500 text-white'
                     }`}>
-                      {car.status === 'Tersedia' ? 'Tersedia' :
+                      {car.status === 'available' ? 'Tersedia' :
                        car.status === 'rented' ? 'Disewa' : 'Maintenance'}
                     </Badge>
                   </div>
@@ -436,7 +439,7 @@ const DetailCar = () => {
               className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition-all duration-300"
             >
               <a
-                href={`https://wa.me/6281234567890?text=Halo%20Admin%2C%20saya%20ingin%20sewa%20${encodeURIComponent(car.name)}%0A%0AJenis%20Layanan%3A%20${encodeURIComponent(rentalType)}%0ADurasi%3A%20${encodeURIComponent(duration)}%0A%0AHarga%3A%20${encodeURIComponent(formatCurrency(calculatedPrice))}`}
+                href={`https://wa.me/6285244129181?text=Halo%20Admin%2C%20saya%20ingin%20sewa%20${encodeURIComponent(car.name)}%0A%0AJenis%20Layanan%3A%20${encodeURIComponent(rentalType)}%0ADurasi%3A%20${encodeURIComponent(duration)}%0A%0AHarga%3A%20${encodeURIComponent(formatCurrency(calculatedPrice))}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3"

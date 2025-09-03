@@ -1,10 +1,10 @@
 [
   {
-    "id": 1001,
+    "id": 1,
     "name": "Avanza",
     "type": "MPV",
     "price": 350000,
-    "status": "Tersedia",
+    "status": "available",
     "mainImage": "/images/car-list/avanza-gray.png",
     "images": [
       "/images/car-list/avanza-gray.png"
@@ -23,34 +23,11 @@
     "description": "Toyota Avanza adalah kendaraan keluarga yang sempurna."
   },
   {
-    "id": 1002,
-    "name": "Xpander",
-    "type": "MPV",
-    "price": 400000,
-    "status": "rented",
-    "mainImage": "/images/car-list/ertiga-white.jpg",
-    "images": [
-      "/images/car-list/ertiga-white.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Matic",
-      "bahanBakar": "Diesel",
-      "pintu": 5,
-      "airConditioner": "Yes",
-      "seats": 7
-    },
-    "features": {
-      "primary": ["ABS", "Air Bags"],
-      "secondary": ["Air Conditioner"]
-    },
-    "description": "Mitsubishi Xpander, MPV modern dan nyaman."
-  },
-  {
-    "id": 1003,
+    "id": 2,
     "name": "Brio",
     "type": "Hatchback",
     "price": 250000,
-    "status": "Tersedia",
+    "status": "available",
     "mainImage": "/images/car-list/brio-white.jpg",
     "images": [
       "/images/car-list/brio-white.jpg"
@@ -69,34 +46,11 @@
     "description": "Honda Brio, hatchback irit dan lincah."
   },
   {
-    "id": 1004,
-    "name": "Jazz",
-    "type": "Hatchback",
-    "price": 270000,
-    "status": "maintenance",
-    "mainImage": "/images/car-list/jazz-red.jpg",
-    "images": [
-      "/images/car-list/jazz-red.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Matic",
-      "bahanBakar": "Bensin",
-      "pintu": 5,
-      "airConditioner": "Yes",
-      "seats": 5
-    },
-    "features": {
-      "primary": ["ABS"],
-      "secondary": ["Air Conditioner"]
-    },
-    "description": "Honda Jazz, hatchback sporty dan stylish."
-  },
-  {
-    "id": 1005,
+    "id": 3,
     "name": "Civic",
     "type": "Sedan",
     "price": 500000,
-    "status": "Tersedia",
+    "status": "available",
     "mainImage": "/images/car-list/civic-white.png",
     "images": [
       "/images/car-list/civic-white.png"
@@ -115,11 +69,11 @@
     "description": "Honda Civic, sedan elegan dan bertenaga."
   },
   {
-    "id": 1006,
+    "id": 4,
     "name": "Vios",
     "type": "Sedan",
     "price": 320000,
-    "status": "Tersedia",
+    "status": "available",
     "mainImage": "/images/car-list/vios-silver.png",
     "images": [
       "/images/car-list/vios-silver.png"
@@ -138,7 +92,99 @@
     "description": "Toyota Vios, sedan ekonomis dan nyaman."
   },
   {
-    "id": 1007,
+    "id": 5,
+    "name": "Pajero",
+    "type": "SUV",
+    "price": 750000,
+    "status": "available",
+    "mainImage": "/images/car-list/pajero-black.jpg",
+    "images": [
+      "/images/car-list/pajero-black.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Matic",
+      "bahanBakar": "Diesel",
+      "pintu": 5,
+      "airConditioner": "Yes",
+      "seats": 7
+    },
+    "features": {
+      "primary": ["ABS", "Air Bags"],
+      "secondary": ["Cruise Control"]
+    },
+    "description": "Mitsubishi Pajero, SUV premium dan kuat."
+  },
+  {
+    "id": 6,
+    "name": "Hiace",
+    "type": "Minivan",
+    "price": 600000,
+    "status": "available",
+    "mainImage": "/images/car-list/hiace-white.jpg",
+    "images": [
+      "/images/car-list/hiace-white.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Manual",
+      "bahanBakar": "Diesel",
+      "pintu": 4,
+      "airConditioner": "Yes",
+      "seats": 12
+    },
+    "features": {
+      "primary": ["Air Conditioner"],
+      "secondary": []
+    },
+    "description": "Toyota Hiace, minibus untuk perjalanan grup."
+  },
+  {
+    "id": 7,
+    "name": "Ertiga",
+    "type": "MPV",
+    "price": 320000,
+    "status": "available",
+    "mainImage": "/images/car-list/ertiga-white.jpg",
+    "images": [
+      "/images/car-list/ertiga-white.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Manual",
+      "bahanBakar": "Bensin",
+      "pintu": 5,
+      "airConditioner": "Yes",
+      "seats": 7
+    },
+    "features": {
+      "primary": ["Air Conditioner"],
+      "secondary": []
+    },
+    "description": "Suzuki Ertiga, MPV irit dan nyaman."
+  },
+  {
+    "id": 8,
+    "name": "Hilux",
+    "type": "Pickup",
+    "price": 500000,
+    "status": "available",
+    "mainImage": "/images/car-list/hilux-gray.jpg",
+    "images": [
+      "/images/car-list/hilux-gray.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Manual",
+      "bahanBakar": "Diesel",
+      "pintu": 4,
+      "airConditioner": "Yes",
+      "seats": 5
+    },
+    "features": {
+      "primary": ["Air Conditioner"],
+      "secondary": []
+    },
+    "description": "Toyota Hilux, pickup tangguh dan kuat."
+  },
+  {
+    "id": 9,
     "name": "Fortuner",
     "type": "SUV",
     "price": 700000,
@@ -161,18 +207,18 @@
     "description": "Toyota Fortuner, SUV tangguh dan mewah."
   },
   {
-    "id": 1008,
-    "name": "Pajero",
+    "id": 10,
+    "name": "Alprad",
     "type": "SUV",
-    "price": 750000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/pajero-black.jpg",
+    "price": 900000,
+    "status": "rented",
+    "mainImage": "/images/car-list/alprad-cream.jpg",
     "images": [
-      "/images/car-list/pajero-black.jpg"
+      "/images/car-list/alprad-cream.jpg"
     ],
     "specifications": {
       "transmisi": "Matic",
-      "bahanBakar": "Diesel",
+      "bahanBakar": "Bensin",
       "pintu": 5,
       "airConditioner": "Yes",
       "seats": 7
@@ -181,10 +227,79 @@
       "primary": ["ABS", "Air Bags"],
       "secondary": ["Cruise Control"]
     },
-    "description": "Mitsubishi Pajero, SUV premium dan kuat."
+    "description": "Toyota Alprad, SUV premium dan nyaman."
   },
   {
-    "id": 1009,
+    "id": 11,
+    "name": "Camey",
+    "type": "Sedan",
+    "price": 300000,
+    "status": "rented",
+    "mainImage": "/images/car-list/camey-gray.jpg",
+    "images": [
+      "/images/car-list/camey-gray.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Manual",
+      "bahanBakar": "Bensin",
+      "pintu": 4,
+      "airConditioner": "No",
+      "seats": 5
+    },
+    "features": {
+      "primary": [],
+      "secondary": []
+    },
+    "description": "Camey, sedan ekonomis."
+  },
+  {
+    "id": 12,
+    "name": "Alphard",
+    "type": "SUV",
+    "price": 1000000,
+    "status": "rented",
+    "mainImage": "/images/car-list/fortuner-white.jpg",
+    "images": [
+      "/images/car-list/fortuner-white.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Matic",
+      "bahanBakar": "Bensin",
+      "pintu": 5,
+      "airConditioner": "Yes",
+      "seats": 7
+    },
+    "features": {
+      "primary": ["ABS", "Air Bags"],
+      "secondary": ["Cruise Control"]
+    },
+    "description": "Toyota Alphard, SUV mewah dan eksklusif."
+  },
+  {
+    "id": 13,
+    "name": "Jazz",
+    "type": "Hatchback",
+    "price": 270000,
+    "status": "maintenance",
+    "mainImage": "/images/car-list/jazz-red.jpg",
+    "images": [
+      "/images/car-list/jazz-red.jpg"
+    ],
+    "specifications": {
+      "transmisi": "Matic",
+      "bahanBakar": "Bensin",
+      "pintu": 5,
+      "airConditioner": "Yes",
+      "seats": 5
+    },
+    "features": {
+      "primary": ["ABS"],
+      "secondary": ["Air Conditioner"]
+    },
+    "description": "Honda Jazz, hatchback sporty dan stylish."
+  },
+  {
+    "id": 14,
     "name": "Rush",
     "type": "SUV",
     "price": 400000,
@@ -207,106 +322,14 @@
     "description": "Toyota Rush, SUV keluarga yang handal."
   },
   {
-    "id": 1010,
-    "name": "Hiace",
-    "type": "Minivan",
-    "price": 600000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/hiace-white.jpg",
-    "images": [
-      "/images/car-list/hiace-white.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Manual",
-      "bahanBakar": "Diesel",
-      "pintu": 4,
-      "airConditioner": "Yes",
-      "seats": 12
-    },
-    "features": {
-      "primary": ["Air Conditioner"],
-      "secondary": []
-    },
-    "description": "Toyota Hiace, minibus untuk perjalanan grup."
-  },
-  {
-    "id": 1011,
-    "name": "Ertiga",
+    "id": 15,
+    "name": "Innova",
     "type": "MPV",
-    "price": 320000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/ertiga-white.jpg",
+    "price": 450000,
+    "status": "maintenance",
+    "mainImage": "/images/car-list/innova-white.jpeg",
     "images": [
-      "/images/car-list/ertiga-white.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Manual",
-      "bahanBakar": "Bensin",
-      "pintu": 5,
-      "airConditioner": "Yes",
-      "seats": 7
-    },
-    "features": {
-      "primary": ["Air Conditioner"],
-      "secondary": []
-    },
-    "description": "Suzuki Ertiga, MPV irit dan nyaman."
-  },
-  {
-    "id": 1012,
-    "name": "Hilux",
-    "type": "Pickup",
-    "price": 500000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/hilux-gray.jpg",
-    "images": [
-      "/images/car-list/hilux-gray.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Manual",
-      "bahanBakar": "Diesel",
-      "pintu": 4,
-      "airConditioner": "Yes",
-      "seats": 5
-    },
-    "features": {
-      "primary": ["Air Conditioner"],
-      "secondary": []
-    },
-    "description": "Toyota Hilux, pickup tangguh dan kuat."
-  },
-  {
-    "id": 1013,
-    "name": "Camey",
-    "type": "Sedan",
-    "price": 300000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/camey-gray.jpg",
-    "images": [
-      "/images/car-list/camey-gray.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Manual",
-      "bahanBakar": "Bensin",
-      "pintu": 4,
-      "airConditioner": "No",
-      "seats": 5
-    },
-    "features": {
-      "primary": [],
-      "secondary": []
-    },
-    "description": "Camey, sedan ekonomis."
-  },
-  {
-    "id": 1014,
-    "name": "Alprad",
-    "type": "SUV",
-    "price": 900000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/alprad-cream.jpg",
-    "images": [
-      "/images/car-list/alprad-cream.jpg"
+      "/images/car-list/innova-white.jpeg"
     ],
     "specifications": {
       "transmisi": "Matic",
@@ -319,29 +342,6 @@
       "primary": ["ABS", "Air Bags"],
       "secondary": ["Cruise Control"]
     },
-    "description": "Toyota Alprad, SUV premium dan nyaman."
-  },
-  {
-    "id": 1015,
-    "name": "Alphard",
-    "type": "SUV",
-    "price": 1000000,
-    "status": "Tersedia",
-    "mainImage": "/images/car-list/fortuner-white.jpg",
-    "images": [
-      "/images/car-list/fortuner-white.jpg"
-    ],
-    "specifications": {
-      "transmisi": "Matic",
-      "bahanBakar": "Bensin",
-      "pintu": 5,
-      "airConditioner": "Yes",
-      "seats": 7
-    },
-    "features": {
-      "primary": ["ABS", "Air Bags"],
-      "secondary": ["Cruise Control"]
-    },
-    "description": "Toyota Alphard, SUV mewah dan eksklusif."
+    "description": "Toyota Innova, MPV keluarga yang nyaman dan andal."
   }
 ]

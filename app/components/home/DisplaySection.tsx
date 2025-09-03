@@ -53,7 +53,7 @@ const DisplaySection = () => {
               className="bg-orange-500 hover:bg-orange-400 text-white border-none px-8 py-4 text-lg"
               asChild
             >
-              <a href="https://wa.me/628123456789" className="flex items-center space-x-2">
+              <a href="https://wa.me/6285244129181" className="flex items-center space-x-2">
               <span>Pesan Sekarang</span>
               <ArrowRight className="w-5 h-5" />
               </a>
@@ -129,7 +129,7 @@ const DisplaySection = () => {
             className="bg-orange-500 hover:bg-orange-400 text-white border-none px-6 py-3 text-base"
             asChild
             >
-            <a href="https://wa.me/628123456789" className="flex items-center space-x-2">
+            <a href="https://wa.me/6285244129181" className="flex items-center space-x-2">
               <span>Pesan Sekarang</span>
               <ArrowRight className="w-5 h-5" />
             </a>

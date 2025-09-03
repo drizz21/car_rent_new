@@ -38,9 +38,9 @@ const CTASection = () => {
                 className="bg-background/20 backdrop-blur-sm border-background/30 text-primary-foreground hover:bg-background/30"
                 asChild
               >
-                <a href="tel:+628123456789" className="flex items-center space-x-2">
+                <a href="tel:+6285244129181" className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>+62 812-3456-789</span>
+                  <span>+62 852-4412-9181</span>
                 </a>
               </Button>
             </div>
@@ -55,7 +55,7 @@ const CTASection = () => {
                 className="btn-hero-secondary"
                 asChild
               >
-                <a href="https://wa.me/628123456789" className="flex items-center space-x-2">
+                <a href="https://wa.me/6285244129181" className="flex items-center space-x-2">
                   <MessageSquare className="w-4 h-4" />
                   <span>Chat Sekarang</span>
                 </a>

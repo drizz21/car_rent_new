@@ -12,15 +12,21 @@ interface CarData {
   name: string;
   type: string;
   price: number;
-  transmisi: string;
-  bahanBakar: string;
-  pintu: number;
-  airConditioner: string;
-  seats: number;
-  konsumsBBM: number;
+  status: string;
+  mainImage: string;
+  images: string[];
+  specifications: {
+    transmisi: string;
+    bahanBakar: string;
+    pintu: number;
+    airConditioner: string;
+    seats: number;
+  };
+  features: {
+    primary: string[];
+    secondary: string[];
+  };
   description: string;
-  status: 'available' | 'rented' | 'maintenance';
-  mainImage: string | null;
 }
 
 const KendaraanSection = () => {
@@ -112,7 +118,7 @@ const KendaraanSection = () => {
                 >
                   <div className="relative">
                     <Image
-                      src={vehicle.mainImage ? `data:image/jpeg;base64,${vehicle.mainImage}` : '/images/mobil-display.png'}
+                      src={vehicle.mainImage || '/images/mobil-display.png'}
                       alt={vehicle.name}
                       width={400}
                       height={192}
@@ -149,22 +155,22 @@ const KendaraanSection = () => {
                     <div className="grid grid-cols-3 gap-4 mb-6">
                       <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                         <Settings className="w-4 h-4" />
-                        <span>{vehicle.transmisi}</span>
+                        <span>{vehicle.specifications.transmisi}</span>
                       </div>
                       <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                         <Users className="w-4 h-4" />
-                        <span>{vehicle.seats} orang</span>
+                        <span>{vehicle.specifications.seats} orang</span>
                       </div>
                       <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                         <Fuel className="w-4 h-4" />
-                        <span>{vehicle.bahanBakar}</span>
+                        <span>{vehicle.specifications.bahanBakar}</span>
                       </div>
                     </div>
 
                     {/* Action Buttons */}
                     <div className="space-y-2">
                       <Button className="w-full btn-hero" asChild>
-                        <a href={`https://wa.me/628123456789?text=Halo, saya tertarik untuk menyewa ${vehicle.name} dengan harga ${formatCurrency(vehicle.price)}/hari`}>
+                        <a href={`https://wa.me/6285244129181?text=Halo, saya tertarik untuk menyewa ${vehicle.name} dengan harga ${formatCurrency(vehicle.price)}/hari`}>
                           Pesan Sekarang
                         </a>
                       </Button>

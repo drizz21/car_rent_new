@@ -14,15 +14,21 @@ interface Car {
   name: string;
   type: string;
   price: number;
-  transmisi: string;
-  bahanBakar: string;
-  pintu: number;
-  airConditioner: string;
-  seats: number;
-  konsumsBBM: number;
+  status: string;
+  mainImage: string;
+  images: string[];
+  specifications: {
+    transmisi: string;
+    bahanBakar: string;
+    pintu: number;
+    airConditioner: string;
+    seats: number;
+  };
+  features: {
+    primary: string[];
+    secondary: string[];
+  };
   description: string;
-  status: 'available' | 'rented' | 'maintenance';
-  mainImage: string | null;
 }
 
 interface CarsListProps {
@@ -53,7 +59,8 @@ const Cars: React.FC<CarsListProps> = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState('Semua');
 
-  const carList = cars;
+  // Ensure cars is always an array
+  const carList = Array.isArray(cars) ? cars : [];
   const filteredCars =
     activeFilter === 'Semua'
       ? carList
@@ -123,15 +130,21 @@ const Cars: React.FC<CarsListProps> = ({
         </div>
 
         {/* Grid Mobil */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedCars.map((car, index) => (
+        {displayedCars.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="text-gray-500 text-lg mb-4">Tidak ada mobil tersedia</div>
+            <p className="text-gray-400">Silakan coba filter lain atau hubungi admin</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedCars.map((car, index) => (
             <Card
               key={car.id}
               className={`group card-hover border-border/50 overflow-hidden animate-fade-in [animation-delay:${index * 0.1}s]`}
             >
               <div className="relative">
                 <Image
-                  src={car.mainImage ? `data:image/jpeg;base64,${car.mainImage}` : '/images/mobil-display.png'}
+                  src={car.mainImage || '/images/mobil-display.png'}
                   alt={car.name}
                   width={400}
                   height={192}
@@ -177,15 +190,15 @@ const Cars: React.FC<CarsListProps> = ({
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                     <Settings className="w-4 h-4" />
-                    <span>{car.transmisi}</span>
+                    <span>{car.specifications.transmisi}</span>
                   </div>
                   <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                     <Users className="w-4 h-4" />
-                    <span>{car.seats} orang</span>
+                    <span>{car.specifications.seats} orang</span>
                   </div>
                   <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                     <Fuel className="w-4 h-4" />
-                    <span>{car.bahanBakar}</span>
+                    <span>{car.specifications.bahanBakar}</span>
                   </div>
                 </div>
 
@@ -207,6 +220,7 @@ const Cars: React.FC<CarsListProps> = ({
             </Card>
           ))}
         </div>
+        )}
 
         {/* Logo Mobil */}
         <section className="bg-white py-22 px-4 rounded-xl mb-8 mt-8">

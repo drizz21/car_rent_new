@@ -11,15 +11,21 @@ interface Car {
   name: string;
   type: string;
   price: number;
-  transmisi: string;
-  bahanBakar: string;
-  pintu: number;
-  airConditioner: string;
-  seats: number;
-  konsumsBBM: number;
+  status: string;
+  mainImage: string;
+  images: string[];
+  specifications: {
+    transmisi: string;
+    bahanBakar: string;
+    pintu: number;
+    airConditioner: string;
+    seats: number;
+  };
+  features: {
+    primary: string[];
+    secondary: string[];
+  };
   description: string;
-  status: 'available' | 'rented' | 'maintenance';
-  mainImage: string | null;
 }
 
 const VehiclesPage = () => {
@@ -34,14 +40,18 @@ const VehiclesPage = () => {
       try {
         const response = await fetch('/api/cars');
         if (!response.ok) {
-          throw new Error('Failed to fetch cars');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        console.log('Fetched cars data:', data); // Debug log
         setCars(data);
         setFilteredCars(data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching cars:', error);
+        // Set empty array as fallback
+        setCars([]);
+        setFilteredCars([]);
         setLoading(false);
       }
     };

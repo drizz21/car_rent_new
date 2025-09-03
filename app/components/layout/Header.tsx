@@ -66,7 +66,7 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3">
             <Button variant="outline" size="sm" asChild>
-              <a href="tel:+628123456789" className="flex items-center space-x-2">
+              <a href="tel:+6285244129181" className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
                 <span>Hubungi</span>
               </a>
@@ -76,7 +76,7 @@ const Header = () => {
               size="sm"
               asChild
             >
-              <a href="https://wa.me/628123456789" className="flex items-center space-x-2">
+              <a href="https://wa.me/6285244129181" className="flex items-center space-x-2">
                 <MessageSquare className="w-4 h-4" />
                 <span>Pesan Sekarang</span>
               </a>
@@ -118,13 +118,13 @@ const Header = () => {
               ))}
               <div className="pt-4 space-y-2">
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="tel:+628123456789" className="flex items-center justify-center space-x-2">
+                  <a href="tel:+6285244129181" className="flex items-center justify-center space-x-2">
                     <Phone className="w-4 h-4" />
                     <span>Hubungi Kami</span>
                   </a>
                 </Button>
                 <Button className="bg-orange-500 hover:bg-orange-400 text-white border-none w-full" asChild>
-                  <a href="https://wa.me/628123456789" className="flex items-center justify-center space-x-2">
+                  <a href="https://wa.me/6285244129181" className="flex items-center justify-center space-x-2">
                     <MessageSquare className="w-4 h-4" />
                     <span>Pesan Sekarang</span>
                   </a>

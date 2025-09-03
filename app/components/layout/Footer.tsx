@@ -70,7 +70,7 @@ const Footer = () => {
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-secondary" />
                 <a
-                  href="tel:+628123456789"
+                  href="tel:+6285244129181"
                   className="text-black/70 hover:text-black transition-colors text-sm font-normal"
                 >
                   +62 812-3456-789
@@ -112,14 +112,14 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/628123456789"
+                href="https://wa.me/6285244129181"
                 className="w-10 h-10 rounded-lg flex items-center justify-center hover:text-secondary transition-colors"
               >
                 <MessageSquare className="w-5 h-5" />
               </a>
             </div>
             <a
-              href="https://wa.me/628123456789"
+              href="https://wa.me/6285244129181"
               className="inline-flex items-center space-x-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg hover:bg-secondary-dark transition-colors text-sm font-medium"
             >
               <MessageSquare className="w-4 h-4" />

@@ -11,7 +11,7 @@ import Header from "../components/layout/Header";
 
 export default function KontakPage() {
   const kontakInfo = [
-    { icon: Phone, title: 'Telepon', info: '+62 812-3456-7890', description: 'Hubungi kami kapan saja, layanan 24/7' },
+    { icon: Phone, title: 'Telepon', info: '+62 852-4412-9181', description: 'Hubungi kami kapan saja, layanan 24/7' },
     { icon: Mail, title: 'Email', info: 'info@rinorental.com', description: 'Kirim pertanyaan atau permintaan penawaran' },
     { icon: MapPin, title: 'Alamat', info: 'Jl. Basuki Rahmat No. 123, Sorong', description: 'Kunjungi kantor kami untuk konsultasi langsung' },
     { icon: Clock, title: 'Jam Operasional', info: '24 Jam / 7 Hari', description: 'Siap melayani Anda kapan saja' }
@@ -65,7 +65,7 @@ export default function KontakPage() {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Layanan WhatsApp</h4>
-                  <p className="text-gray-600">Untuk kemudahan, Anda dapat langsung menghubungi kami melalui WhatsApp di nomor +62 812-3456-7890. Admin kami akan merespon dengan cepat.</p>
+                  <p className="text-gray-600">Untuk kemudahan, Anda dapat langsung menghubungi kami melalui WhatsApp di nomor +62 852-4412-9181. Admin kami akan merespon dengan cepat.</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Reservasi Online</h4>
